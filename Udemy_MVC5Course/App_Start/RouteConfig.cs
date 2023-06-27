@@ -14,7 +14,12 @@ namespace Udemy_MVC5Course
 
 
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-                       
+
+            routes.MapRoute(
+                "MoviesByReleaseDate",
+                "Movies/ByReleaseDate/{year}/{month}",
+                new {controller="Movies",action="ByReleaseDate" },
+                new { year=@"2015|2016",month=@"\d{2}"});    // Custome Routing
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
