@@ -39,5 +39,13 @@ namespace Udemy_MVC5Course.Controllers
         {
             return Content(year +"/"+ month );
         }
+
+        // Using Attribute routing
+        [Route("Movies/released/{year}/{month:regex(\\d{2}):range(1,12)}")]     //:regex(\\d{2}):range(1,12)
+        public ActionResult ReleasedDate(int year,int month)
+        {
+            return Content(year + "/" + month);
+        }
+
     }
 }

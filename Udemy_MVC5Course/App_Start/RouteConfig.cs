@@ -14,12 +14,18 @@ namespace Udemy_MVC5Course
 
 
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            // Atribute routing
 
-            routes.MapRoute(
-                "MoviesByReleaseDate",
-                "Movies/ByReleaseDate/{year}/{month}",
-                new {controller="Movies",action="ByReleaseDate" },
-                new { year=@"2015|2016",month=@"\d{2}"});    // Custome Routing
+            routes.MapMvcAttributeRoutes();
+            //// Custome Routing
+            //routes.MapRoute(
+            //    "MoviesByReleaseDate",
+            //    "Movies/ByReleased/{year}/{month}",
+            //    new { controller = "Movies", action = "ByReleaseDate" },
+            //    new { year = @"2015|2016", month = @"\d{2}" });
+
+
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
