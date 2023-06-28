@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Udemy_MVC5Course.Models;
+using Udemy_MVC5Course.ViewModels;
 
 namespace Udemy_MVC5Course.Controllers
 {
@@ -12,9 +13,21 @@ namespace Udemy_MVC5Course.Controllers
         // GET: Movies
         public ActionResult Random()
         {
-            var movie = new Movie() { Name = "Shark" };
+            var newmovie = new Movie() { Name = "Shark" };
+            var customers = new List<Customer>
+            {
+                new Customer{CName="Aditya"},
+                new Customer{CName="Vishal"}
 
-            return View(movie);
+            };
+            var viewmodel = new RandomMovieViewModel
+            {
+                movie = newmovie,
+                cust=customers
+            };
+
+            return View(viewmodel);
+            
             //return Content("Hello World");
             //return HttpNotFound();
             //return new EmptyResult();
