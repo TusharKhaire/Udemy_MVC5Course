@@ -13,26 +13,41 @@ namespace Udemy_MVC5Course.Controllers
         // GET: Movies
         public ActionResult Random()
         {
-            var newmovie = new Movie() { Name = "Shark" };
+            var newmovie = new Movie() { M_Name = "Shark" };
             var customers = new List<Customer>
             {
-                new Customer{CName="Aditya"},
-                new Customer{CName="Vishal"}
-
+                new Customer{C_Name="Aditya"},
+                new Customer{C_Name="Vishal"}
             };
             var viewmodel = new RandomMovieViewModel
             {
-                movie = newmovie,
-                cust=customers
+                MoviesName = newmovie,
+                Cust = customers
             };
 
-            return View(viewmodel);
-            
+            return View(newmovie);
             //return Content("Hello World");
             //return HttpNotFound();
             //return new EmptyResult();
             //return RedirectToAction("Index","Home",new { page=1,sortBy="name"});
 
+        }
+        [HttpGet]
+        [Route("Movies/Index")]    
+        public ActionResult Index()
+        {
+            var newmovie = new Movie() { M_Name = "Shark" };
+            var customers = new List<Customer>
+            {
+                new Customer{C_Name="Aditya"},
+                new Customer{C_Name="Vishal"}
+            };
+            var viewmodel = new RandomMovieViewModel
+            {
+                MoviesName = newmovie,
+                Cust = customers
+            };
+            return View(newmovie);
         }
         public ActionResult Edit(int id)  //parameterise method
         {

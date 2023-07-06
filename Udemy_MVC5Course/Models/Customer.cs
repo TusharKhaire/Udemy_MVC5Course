@@ -7,7 +7,7 @@ namespace Udemy_MVC5Course.Models
 {
     public class Customer
     {
-        public int id { get; set; }
-        public string CName { get; set; }
+        public int C_id { get; set; }
+        public string C_Name { get; set; }
     }
 }

@@ -2,31 +2,33 @@
 @model Udemy_MVC5Course.ViewModels.RandomMovieViewModel
 
 @{
-    ViewBag.Title = "";
+    ViewBag.Title = "Random";
 
 }
-
 <h2>Random</h2>
 
-@{ 
-    var classname = Model.cust.Count > 1 ? "popular" : null;
+@{
+    //var classname = Model.cust.Count > 1 ? "popular" : null;
 }
-<h2 class="@classname">@Model.movie.Name</h2>
-@if (Model.cust.Count == 0)
-{
-    <text>no one Watch this movie</text>
-}
-else
-{
-    <ul>
-        @foreach (var customer in Model.cust)
-        {
-            <li>
-                <h2>@customer.CName</h2>
+@*<h2 class="popular">@Model.cust</h2>*@
 
-            </li>
+@*
 
-        }
+    @if (Model.cust.Count == 0)
+    {
+        <text>no one Watch this movie</text>
+    }
+    else
+    {
+        <ul>
+            @foreach (var customer in Model.cust)
+            {
+                <li>
+                    <h2>@customer.CName</h2>
 
-    </ul>
-}
+                </li>
+
+            }
+
+        </ul>
+    }*@

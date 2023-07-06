@@ -7,8 +7,8 @@ namespace Udemy_MVC5Course.Models
 {
     public class Movie
     {
-        public int id { get; set; }
-        public string Name { get; set; }
+        public int M_id { get; set; }
+        public string M_Name { get; set; }
         
     }
 }
