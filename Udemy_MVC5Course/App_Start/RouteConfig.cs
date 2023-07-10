@@ -16,7 +16,7 @@ namespace Udemy_MVC5Course
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             // Atribute routing
 
-            routes.MapMvcAttributeRoutes();
+            //routes.MapMvcAttributeRoutes();
             //// Custome Routing
             //routes.MapRoute(
             //    "MoviesByReleaseDate",

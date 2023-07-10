@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Udemy_MVC5Course.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<table>
+    <thead>
+        <tr>
+            <td>Customer Name</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+        <tr>
+            <td>@Html.ActionLink(customer.C_Name, "Details", new { id = customer.C_id })</td>
+        </tr>
+        }
+    </tbody>
+</table>
+
