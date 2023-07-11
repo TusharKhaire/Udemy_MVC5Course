@@ -284,6 +284,18 @@
     <Compile Include="Migrations\202307101559168_ApplyannotationToCustomerName.designer.cs">
       <DependentUpon>202307101559168_ApplyannotationToCustomerName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202307111556416_updateMembershiptypes.cs" />
+    <Compile Include="Migrations\202307111556416_updateMembershiptypes.designer.cs">
+      <DependentUpon>202307111556416_updateMembershiptypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307111610126_UpdateCustomerbirthdate.cs" />
+    <Compile Include="Migrations\202307111610126_UpdateCustomerbirthdate.designer.cs">
+      <DependentUpon>202307111610126_UpdateCustomerbirthdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307111629459_checkdatabase.cs" />
+    <Compile Include="Migrations\202307111629459_checkdatabase.designer.cs">
+      <DependentUpon>202307111629459_checkdatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -365,6 +377,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202307101559168_ApplyannotationToCustomerName.resx">
       <DependentUpon>202307101559168_ApplyannotationToCustomerName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307111556416_updateMembershiptypes.resx">
+      <DependentUpon>202307111556416_updateMembershiptypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307111610126_UpdateCustomerbirthdate.resx">
+      <DependentUpon>202307111610126_UpdateCustomerbirthdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307111629459_checkdatabase.resx">
+      <DependentUpon>202307111629459_checkdatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

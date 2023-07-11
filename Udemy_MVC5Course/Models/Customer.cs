@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Web;
 
@@ -16,5 +17,6 @@ namespace Udemy_MVC5Course.Models
         public bool IsSubscribeToWatchLetter { get; set; }
         public MembershipType MembershipType { get; set; }
         public byte MemberShipId { get; set; }
+        public DateTime? Birthdate { get; set; }
     }
 }

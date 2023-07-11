@@ -5,4 +5,14 @@
 
 <h2>Details</h2>
 <h3>@Model.C_Name</h3>
+<ul>
+    <li>
+        Memebership Type:@Model.MembershipType.Name
+    </li>
+    @if (Model.Birthdate != null)
+    {
+        <li>Birth Date:@Model.Birthdate</li>
+    }
+
+</ul>
 

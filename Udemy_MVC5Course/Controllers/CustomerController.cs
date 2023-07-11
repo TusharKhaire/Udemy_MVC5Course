@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Udemy_MVC5Course.DataConnection;
 using Udemy_MVC5Course.Models;
+using System.Data.Entity;
 
 
 namespace Udemy_MVC5Course.Controllers
@@ -23,13 +24,13 @@ namespace Udemy_MVC5Course.Controllers
         // GET: Customer
         public ActionResult Index()
         {
-            var customer = _context.Customers.ToList();
+            var customer = _context.Customers.Include(x=>x.MembershipType).ToList();
             return View(customer);
         }
 
         public ActionResult Details(int id)
         {
-            var customer = _context.Customers.SingleOrDefault(x => x.C_id == id);
+            var customer = _context.Customers.Include(x=>x.MembershipType).SingleOrDefault(x => x.C_id == id);
             if (customer == null)
             {
                 return HttpNotFound();
