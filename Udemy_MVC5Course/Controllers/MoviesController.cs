@@ -25,7 +25,7 @@ namespace Udemy_MVC5Course.Controllers
                 Cust = customers
             };
 
-            return View(newmovie);
+            return View(viewmodel);
             //return Content("Hello World");
             //return HttpNotFound();
             //return new EmptyResult();
@@ -33,7 +33,7 @@ namespace Udemy_MVC5Course.Controllers
 
         }
         [HttpGet]
-        [Route("Movies/Index")]    
+        [Route("Movies/Index")]
         public ActionResult Index()
         {
             var newmovie = new Movie() { M_Name = "Shark" };
