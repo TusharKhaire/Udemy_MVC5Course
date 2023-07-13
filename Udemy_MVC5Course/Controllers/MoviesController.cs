@@ -3,17 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Udemy_MVC5Course.DataConnection;
 using Udemy_MVC5Course.Models;
 using Udemy_MVC5Course.ViewModels;
+using System.Data.Entity;
+
 
 namespace Udemy_MVC5Course.Controllers
 {
     public class MoviesController : Controller
     {
+        private DataContext dbconn;
+        public MoviesController()
+        {
+            dbconn = new DataContext();
+        }
+        protected override void Dispose(bool disposing)
+        {
+            dbconn.Dispose();
+        }
+        public ActionResult ShowMovies()
+        {
+            var data = dbconn.Movies.Include(c=>c.genre).ToList();
+            return View(data);
+        }
+        public ActionResult Details(int id)
+        {
+            var movie = dbconn.Movies.Include(x => x.genre).SingleOrDefault(x => x.M_id == id);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+            return View(movie);
+        }
+
         // GET: Movies
         public ActionResult Random()
         {
-            var newmovie = new Movie() { M_Name = "Shark" };
+            var newmovie = new Movies() { M_Name = "Shark" };
             var customers = new List<Customer>
             {
                 new Customer{C_Name="Aditya"},
@@ -36,7 +63,7 @@ namespace Udemy_MVC5Course.Controllers
         [Route("Movies/Index")]
         public ActionResult Index()
         {
-            var newmovie = new Movie() { M_Name = "Shark" };
+            var newmovie = new Movies() { M_Name = "Shark" };
             var customers = new List<Customer>
             {
                 new Customer{C_Name="Aditya"},

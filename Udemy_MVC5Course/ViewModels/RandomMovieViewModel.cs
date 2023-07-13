@@ -8,7 +8,7 @@ namespace Udemy_MVC5Course.ViewModels
 {
     public class RandomMovieViewModel
     {
-        public Movie MoviesName { get; set; }
+        public Movies MoviesName { get; set; }
         public List<Customer> Cust { get; set; }
     }
 }

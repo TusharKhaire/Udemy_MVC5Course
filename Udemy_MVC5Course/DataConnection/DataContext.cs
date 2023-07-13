@@ -14,8 +14,9 @@ namespace Udemy_MVC5Course.DataConnection
         public DataContext() : base("Udemy_MVC5Course") { }
 
         public DbSet<Customer> Customers { get; set; }
-        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Movies> Movies { get; set; }
         public DbSet<MembershipType> MembershipTypes { get; set; }
+        public DbSet<Genres> Genres { get; set; }
 
     
     }

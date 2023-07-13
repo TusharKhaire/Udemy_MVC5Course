@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Udemy_MVC5Course.Models.Movies>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<table>
+    <thead>
+        <tr>
+            <td>Movies Name</td>
+            <td>Genre</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var data in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(data.M_Name, "Details", new { id = data.M_id })</td>
+                <td> @data.genre.Type</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

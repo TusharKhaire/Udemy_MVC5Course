@@ -1,0 +1,24 @@
+﻿@model Udemy_MVC5Course.Models.Movies
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<h3>@Model.M_Name</h3>
+<ul>
+    <li>
+        Movie Type:@Model.genre.Type
+    </li>
+    <li>
+        Release Date:@Model.ReleaseDate
+    </li>
+    <li>
+        Added Date Type:@Model.AddedDate
+    </li>
+    <li>
+        Avilable Stock:@Model.NumberInStock
+    </li>
+
+
+</ul>
+
