@@ -16,7 +16,7 @@
         @foreach (var customer in Model)
         {
         <tr>
-            <td>@Html.ActionLink(customer.C_Name, "Details", new { id = customer.C_id })</td>
+            <td>@Html.ActionLink(customer.C_Name, "Edit", new { id = customer.C_id })</td>
             <td> @customer.MembershipType.Name</td>
             <td> @customer.MembershipType.DiscountRate%</td>
         </tr>

@@ -47,6 +47,46 @@ namespace Udemy_MVC5Course.Controllers
                 MembershipTypes = membershiptye
             };
             return View(viewmodel);
-        }         
+        }      
+        [HttpPost]
+        public ActionResult CreateNew(NewCustomerViewModel data)
+        { 
+            var typeid = data.customer.MemberShipId;
+            var membershipdata = _context.MembershipTypes.FirstOrDefault(x => x.Id == typeid);
+            data.customer.MembershipType =membershipdata;
+            if (data.customer.C_id == 0)
+            {
+                _context.Customers.Add(data.customer);
+            }
+            else
+            {
+                var CustomerinDb = _context.Customers.Single(x => x.C_id == data.customer.C_id);
+                //Mapper.Map(data.customer,CustomerinDb)
+                CustomerinDb.C_Name = data.customer.C_Name;
+                CustomerinDb.Birthdate = data.customer.Birthdate;
+                CustomerinDb.IsSubscribeToWatchLetter = data.customer.IsSubscribeToWatchLetter;
+                CustomerinDb.MembershipType = membershipdata;
+
+            }
+
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Customer");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var customer = _context.Customers.FirstOrDefault(x => x.C_id == id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            var viewmodelcust = new NewCustomerViewModel
+            {
+                customer = customer,
+                MembershipTypes = _context.MembershipTypes.ToList()
+            };
+
+            return View("CreateNew", viewmodelcust);
+        }
     }
 }

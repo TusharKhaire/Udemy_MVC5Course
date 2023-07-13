@@ -17,6 +17,7 @@ namespace Udemy_MVC5Course.Models
         public bool IsSubscribeToWatchLetter { get; set; }
         public MembershipType MembershipType { get; set; }
         public byte MemberShipId { get; set; }
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public DateTime? Birthdate { get; set; }
     }
 }
