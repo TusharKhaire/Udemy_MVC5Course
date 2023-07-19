@@ -36,7 +36,40 @@ namespace Udemy_MVC5Course.Controllers
             }
             return View(movie);
         }
+        public ActionResult AddMovies()
+        {
+            var gonre = dbconn.Genres.ToList();
+            NewMoviesViewModel newmovie = new NewMoviesViewModel
+            {
+                Genera = gonre
+            };
+            return View(newmovie);
+        }
+        [HttpPost]
+        public ActionResult AddMovies(NewMoviesViewModel data)
+        {
+            // Retrieve the Genre associated with the Movie
+            var genre = dbconn.Genres.SingleOrDefault(x => x.Id == data.movie.Genre_Id);
 
+            // Make sure the Genre is found before proceeding
+            if (genre != null)
+            {
+                // Set the Genre navigation property of the Movie
+                data.movie.genre = genre;
+
+                // Add the Movie to the Movies DbSet and save changes
+                dbconn.Movies.Add(data.movie);
+                dbconn.SaveChanges();
+            }
+            else
+            {
+                // Handle the case where the specified Genre is not found.
+                // You can display an error message or take other actions.
+            }
+
+            return RedirectToAction("AddMovies");
+
+        }
         // GET: Movies
         public ActionResult Random()
         {

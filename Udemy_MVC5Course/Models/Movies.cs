@@ -14,6 +14,8 @@ namespace Udemy_MVC5Course.Models
         public DateTime ReleaseDate { get; set; }
         public DateTime AddedDate { get; set; }
         public byte NumberInStock { get; set; }
+        public byte Genre_Id { get; set; }
         public Genres genre { get; set; }
+
     }
 }

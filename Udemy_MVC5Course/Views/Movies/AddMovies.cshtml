@@ -1,0 +1,37 @@
+﻿@model Udemy_MVC5Course.ViewModels.NewMoviesViewModel
+@{
+    ViewBag.Title = "AddMovies";
+}
+
+<h2>Movies</h2>
+@using (Html.BeginForm("AddMovies","Movies"))
+{
+<div class="form-horizontal">
+    <div class="form-group">
+        @Html.LabelFor(x => x.movie.M_Name, "Name")
+        @Html.EditorFor(x => x.movie.M_Name, new { htmlattributes = new { @class = "form-control" } })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.movie.ReleaseDate, "Release Date")
+        @Html.EditorFor(x => x.movie.ReleaseDate, new { htmlattributes = new { @class = "form-control" } })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.movie.AddedDate, "Added Date")
+        @Html.EditorFor(x => x.movie.AddedDate, new { htmlattributes = new { @class = "form-control" } })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.movie.NumberInStock, "No In Stock")
+        @Html.EditorFor(x => x.movie.NumberInStock, new { htmlattributes = new { @class = "form-control" } })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.movie.Genre_Id, "Genre")
+        @Html.DropDownListFor(x => x.movie.Genre_Id, new SelectList(Model.Genera, "Id", "Type"),"",new { @class="form-control"} )
+    </div>
+    @Html.HiddenFor(x=>x.movie.M_id)
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save</button>
+
+    </div>
+</div>
+
+}
