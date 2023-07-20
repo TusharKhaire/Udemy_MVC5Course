@@ -7,7 +7,7 @@ using Udemy_MVC5Course.DataConnection;
 using Udemy_MVC5Course.Models;
 using Udemy_MVC5Course.ViewModels;
 using System.Data.Entity;
-
+using System.Globalization;
 
 namespace Udemy_MVC5Course.Controllers
 {
@@ -24,17 +24,17 @@ namespace Udemy_MVC5Course.Controllers
         }
         public ActionResult ShowMovies()
         {
-            var data = dbconn.Movies.Include(c=>c.genre).ToList();
-            return View(data);
+            //var data = dbconn.Movies.Include(c=>c.genre).ToList();
+            return View();
         }
         public ActionResult Details(int id)
         {
-            var movie = dbconn.Movies.Include(x => x.genre).SingleOrDefault(x => x.M_id == id);
-            if (movie == null)
-            {
-                return HttpNotFound();
-            }
-            return View(movie);
+            //var movie = dbconn.Movies.Include(x => x.genre).SingleOrDefault(x => x.M_id == id);
+            //if (movie == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            return View();
         }
         public ActionResult AddMovies()
         {
@@ -50,14 +50,19 @@ namespace Udemy_MVC5Course.Controllers
         {
             // Retrieve the Genre associated with the Movie
             var genre = dbconn.Genres.SingleOrDefault(x => x.Id == data.movie.Genre_Id);
-
+            var movies = new Movies();
             // Make sure the Genre is found before proceeding
-            if (genre != null)
-            {
-                // Set the Genre navigation property of the Movie
-                data.movie.genre = genre;
+            DateTime releaseDate;
+            DateTime addedDate;
 
-                // Add the Movie to the Movies DbSet and save changes
+                if (genre != null)
+            {
+                movies.M_id = data.movie.M_id;
+                movies.M_Name = data.movie.M_Name;
+                movies.ReleaseDate =Convert.ToDateTime( data.movie.ReleaseDate);
+                movies.AddedDate = Convert.ToDateTime(data.movie.AddedDate);
+                movies.NumberInStock = data.movie.NumberInStock;
+                movies.Genre_Id = data.movie.Genre_Id;
                 dbconn.Movies.Add(data.movie);
                 dbconn.SaveChanges();
             }
