@@ -50,7 +50,16 @@ namespace Udemy_MVC5Course.Controllers
         }      
         [HttpPost]
         public ActionResult CreateNew(NewCustomerViewModel data)
-        { 
+        {
+            if (!ModelState.IsValid)
+            {
+                var viemodel = new NewCustomerViewModel
+                {
+                    customer = data.customer,
+                    MembershipTypes=_context .MembershipTypes.ToList()
+                };
+                return View("CreateNew", viemodel);
+            }
             var typeid = data.customer.MemberShipId;
             var membershipdata = _context.MembershipTypes.FirstOrDefault(x => x.Id == typeid);
             data.customer.MembershipType =membershipdata;

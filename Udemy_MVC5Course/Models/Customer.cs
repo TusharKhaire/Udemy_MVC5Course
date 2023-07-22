@@ -18,6 +18,7 @@ namespace Udemy_MVC5Course.Models
         public MembershipType MembershipType { get; set; }
         public byte MemberShipId { get; set; }
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
+        [Min18YearIfMember]
         public DateTime? Birthdate { get; set; }
     }
 }

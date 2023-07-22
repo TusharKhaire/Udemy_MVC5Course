@@ -13,11 +13,11 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(x => x.movie.ReleaseDate, "Release Date")
-        @Html.EditorFor(x => x.movie.ReleaseDate, new { htmlattributes = new { @class = "form-control" } })
+        @Html.EditorFor(x => x.movie.ReleaseDate, new { htmlAttributes = new { @type = "date", @class = "form-control datepicker" } })  @*, @Value = Model.movie.ReleaseDate.ToString("yyyy-MM-dd")*@
     </div>
     <div class="form-group">
         @Html.LabelFor(x => x.movie.AddedDate, "Added Date")
-        @Html.EditorFor(x => x.movie.AddedDate, new { htmlattributes = new { @class = "form-control" } })
+        @Html.EditorFor(x => x.movie.AddedDate, new { htmlattributes = new { @type = "date", @class = "form-control datepicker" } })
     </div>
     <div class="form-group">
         @Html.LabelFor(x => x.movie.NumberInStock, "No In Stock")
