@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using Udemy_MVC5Course.Models;
 
 namespace Udemy_MVC5Course.Models
 {
@@ -13,7 +14,8 @@ namespace Udemy_MVC5Course.Models
             //return base.IsValid(value, validationContext);
             var customer = (Customer)validationContext.ObjectInstance;
 
-            if (customer.MemberShipId==0 || customer.MemberShipId == 1)
+            if (customer.MemberShipId==MembershipType.Unknown ||
+                customer.MemberShipId == MembershipType.PayAsYouGo)
             {
                 return ValidationResult.Success;
             }

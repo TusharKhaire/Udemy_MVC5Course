@@ -42,12 +42,14 @@ namespace Udemy_MVC5Course.Controllers
         public ActionResult CreateNew()
         {
             var membershiptye = _context.MembershipTypes.ToList();
+
             var viewmodel = new NewCustomerViewModel
             {
+                customer = new Customer(),
                 MembershipTypes = membershiptye
             };
             return View(viewmodel);
-        }      
+        }
         [HttpPost]
         public ActionResult CreateNew(NewCustomerViewModel data)
         {
@@ -56,13 +58,13 @@ namespace Udemy_MVC5Course.Controllers
                 var viemodel = new NewCustomerViewModel
                 {
                     customer = data.customer,
-                    MembershipTypes=_context .MembershipTypes.ToList()
+                    MembershipTypes = _context.MembershipTypes.ToList()
                 };
                 return View("CreateNew", viemodel);
             }
             var typeid = data.customer.MemberShipId;
             var membershipdata = _context.MembershipTypes.FirstOrDefault(x => x.Id == typeid);
-            data.customer.MembershipType =membershipdata;
+            data.customer.MembershipType = membershipdata;
             if (data.customer.C_id == 0)
             {
                 _context.Customers.Add(data.customer);
