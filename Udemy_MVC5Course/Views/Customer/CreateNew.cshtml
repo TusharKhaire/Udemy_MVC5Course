@@ -31,6 +31,7 @@
     <div class="form-group"></div>
     <br />
     @Html.HiddenFor(x => x.customer.C_id)
+    @Html.AntiForgeryToken()
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Save</button>
 
@@ -40,3 +41,6 @@
 
 }
 
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    }

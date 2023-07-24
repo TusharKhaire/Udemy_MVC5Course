@@ -41,11 +41,15 @@ namespace Udemy_MVC5Course.Controllers
             var gonre = dbconn.Genres.ToList();
             NewMoviesViewModel newmovie = new NewMoviesViewModel
             {
+                movie =new Movies(),
                 Genera = gonre
             };
+            newmovie.movie.ReleaseDate = DateTime.Now;
+            newmovie.movie.AddedDate = DateTime.Now;
             return View(newmovie);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddMovies(NewMoviesViewModel data)
         {
             // Retrieve the Genre associated with the Movie

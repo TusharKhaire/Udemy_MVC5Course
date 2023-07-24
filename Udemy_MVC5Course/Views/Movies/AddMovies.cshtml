@@ -8,26 +8,33 @@
 {
 <div class="form-horizontal">
     <div class="form-group">
+
         @Html.LabelFor(x => x.movie.M_Name, "Name")
         @Html.EditorFor(x => x.movie.M_Name, new { htmlattributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(x => x.movie.M_Name, "", new { @class="text-danger"})
     </div>
     <div class="form-group">
         @Html.LabelFor(x => x.movie.ReleaseDate, "Release Date")
-        @Html.EditorFor(x => x.movie.ReleaseDate, new { htmlAttributes = new { @type = "date", @class = "form-control datepicker" } })  @*, @Value = Model.movie.ReleaseDate.ToString("yyyy-MM-dd")*@
+        @Html.EditorFor(x => x.movie.ReleaseDate, new { htmlAttributes = new { @type = "date", @class = "form-control datepicker", @Value = Model.movie.ReleaseDate.ToString("yyyy-MM-dd") } })  @*, @Value = Model.movie.ReleaseDate.ToString("yyyy-MM-dd")*@
+        @Html.ValidationMessageFor(x => x.movie.ReleaseDate, "", new { @class = "text-danger" })
     </div>
     <div class="form-group">
         @Html.LabelFor(x => x.movie.AddedDate, "Added Date")
-        @Html.EditorFor(x => x.movie.AddedDate, new { htmlattributes = new { @type = "date", @class = "form-control datepicker" } })
+        @Html.EditorFor(x => x.movie.AddedDate, new { htmlattributes = new { @type = "date", @class = "form-control datepicker", @Value = Model.movie.AddedDate.ToString("yyyy-MM-dd") } })
+        @Html.ValidationMessageFor(x => x.movie.AddedDate, "", new { @class = "text-danger" })
     </div>
     <div class="form-group">
         @Html.LabelFor(x => x.movie.NumberInStock, "No In Stock")
         @Html.EditorFor(x => x.movie.NumberInStock, new { htmlattributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(x => x.movie.NumberInStock, "", new { @class = "text-danger" })
     </div>
     <div class="form-group">
         @Html.LabelFor(x => x.movie.Genre_Id, "Genre")
-        @Html.DropDownListFor(x => x.movie.Genre_Id, new SelectList(Model.Genera, "Id", "Type"),"",new { @class="form-control"} )
+        @Html.DropDownListFor(x => x.movie.Genre_Id, new SelectList(Model.Genera, "Id", "Type"), "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.movie.Genre_Id, "", new { @class = "text-danger" })
     </div>
     @Html.HiddenFor(x=>x.movie.M_id)
+    @Html.AntiForgeryToken()
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Save</button>
 
@@ -35,3 +42,6 @@
 </div>
 
 }
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    }

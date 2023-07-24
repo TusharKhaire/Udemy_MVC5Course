@@ -51,6 +51,7 @@ namespace Udemy_MVC5Course.Controllers
             return View(viewmodel);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CreateNew(NewCustomerViewModel data)
         {
             if (!ModelState.IsValid)

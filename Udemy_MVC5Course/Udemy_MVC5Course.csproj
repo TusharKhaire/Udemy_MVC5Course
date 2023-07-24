@@ -316,6 +316,10 @@
     <Compile Include="Migrations\202307201405534_RemoveReFGonreFromMovies.designer.cs">
       <DependentUpon>202307201405534_RemoveReFGonreFromMovies.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202307221232110_AddAnotationsInMovies.cs" />
+    <Compile Include="Migrations\202307221232110_AddAnotationsInMovies.designer.cs">
+      <DependentUpon>202307221232110_AddAnotationsInMovies.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Genres.cs" />
@@ -429,6 +433,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202307201405534_RemoveReFGonreFromMovies.resx">
       <DependentUpon>202307201405534_RemoveReFGonreFromMovies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307221232110_AddAnotationsInMovies.resx">
+      <DependentUpon>202307221232110_AddAnotationsInMovies.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
