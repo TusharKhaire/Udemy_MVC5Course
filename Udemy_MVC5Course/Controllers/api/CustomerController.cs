@@ -12,6 +12,11 @@ namespace Udemy_MVC5Course.Controllers.api
     {
         private DataContext dbconn;
 
+        public CustomerController()
+        {
+            dbconn = new DataContext(); 
+        }
+
         public IEnumerable <Customer> GetCustomers()
         {
             return dbconn.Customers.ToList();
