@@ -14,6 +14,10 @@ namespace Udemy_MVC5Course.App_Start
         {
             Mapper.CreateMap<Customer, CustomerDto>();
             Mapper.CreateMap<CustomerDto, Customer>();
+
+
+            Mapper.CreateMap<Movies, MoviesDto>();
+            Mapper.CreateMap<MoviesDto, Movies>();
         }
 
     }
