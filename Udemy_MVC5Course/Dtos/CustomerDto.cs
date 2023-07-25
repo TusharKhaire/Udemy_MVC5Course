@@ -16,7 +16,7 @@ namespace Udemy_MVC5Course.Dtos
         public string C_Name { get; set; }
         public bool IsSubscribeToWatchLetter { get; set; }
         public byte MemberShipId { get; set; }
-        [Min18YearIfMember]
+        //[Min18YearIfMember]
         public DateTime? Birthdate { get; set; }
 
     }

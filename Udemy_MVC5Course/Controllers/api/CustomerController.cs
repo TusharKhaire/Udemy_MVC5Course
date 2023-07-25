@@ -25,25 +25,26 @@ namespace Udemy_MVC5Course.Controllers.api
             return dbconn.Customers.ToList().Select(Mapper.Map<Customer,CustomerDto>);
         }
 
-        public CustomerDto GetCustomer(int id)
+        public IHttpActionResult GetCustomer(int id)
         {
             var customer = dbconn.Customers.SingleOrDefault(x=>x.C_id==id);
             if (customer == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
-
-            return Mapper.Map<Customer,CustomerDto>(customer);
+                /// throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
+            return Ok(Mapper.Map<Customer,CustomerDto>(customer));
         }
 
         [HttpPost]
-        public CustomerDto CreateCustomer(CustomerDto customerdto)
+        public IHttpActionResult CreateCustomer(CustomerDto customerdto)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                //throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
             var customer = Mapper.Map<CustomerDto, Customer>(customerdto);
             dbconn.Customers.Add(customer);
             dbconn.SaveChanges();
             customerdto.C_id = customer.C_id;
-            return customerdto;
+            return Created(new Uri(Request.RequestUri+"/"+customer.C_id),customerdto);
         }
 
         [HttpPut]
