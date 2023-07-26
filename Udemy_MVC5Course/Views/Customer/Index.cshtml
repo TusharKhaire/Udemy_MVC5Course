@@ -4,12 +4,13 @@
 }
 
 <h2>Index</h2>
-<table>
+<table id="customers" class="table table-bordered table-hover">
     <thead>
         <tr>
             <td>Customer Name</td>
             <td>Name</td>
             <td>Discount Rate</td>
+            <td>Delete</td>
         </tr>
     </thead>
     <tbody>
@@ -19,8 +20,32 @@
             <td>@Html.ActionLink(customer.C_Name, "Edit", new { id = customer.C_id })</td>
             <td> @customer.MembershipType.Name</td>
             <td> @customer.MembershipType.DiscountRate%</td>
+            <td>
+                <button data-customer-id="@customer.C_id" class="btn-link js-delete">Delete</button> 
+            </td>
         </tr>
         }
     </tbody>
 </table>
 
+@section scripts
+{
+   <script type="text/javascript">
+       $(document).ready(function () {
+           $("#customers .js-delete").on("click", function () {
+               var button = $(this);
+               if (confirm("Are you sure to delete this customer")) {
+                   $.ajax({
+                       url: "/api/Customer/" + button.attr("data-customer-id"),
+                       method: "DELETE",
+                       success: function () {
+                           button.parents("tr").remove();
+                       }
+
+                   });
+               }
+           });
+       });
+
+    </script>
+    }
