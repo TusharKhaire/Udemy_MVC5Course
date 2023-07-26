@@ -34,6 +34,20 @@
        $(document).ready(function () {
            $("#customers .js-delete").on("click", function () {
                var button = $(this);
+               debugger;
+               //bootbox.confirm("Are you sure to delete this Customer", function (result) {
+               //    alert(result);
+               //    if (result) {
+               //        $.ajax({
+               //            url: "/api/Customer/" + button.attr("data-customer-id"),
+               //            method: "DELETE",
+               //            success: function () {
+               //                button.parents("tr").remove();
+               //            }
+
+               //        });
+               //    }
+               //});
                if (confirm("Are you sure to delete this customer")) {
                    $.ajax({
                        url: "/api/Customer/" + button.attr("data-customer-id"),
